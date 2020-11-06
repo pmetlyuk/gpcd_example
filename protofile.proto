@@ -1,0 +1,16 @@
+syntax = "proto3" ;
+
+package myproto;
+
+service MyService {
+    rpc GetMaxOne(Numbers) returns (Answer){}
+}
+
+message Numbers {
+    repeated int32 nums = 1;
+    uint64 size = 2;
+}
+
+message Answer {
+    uint64 answer = 1;
+}
