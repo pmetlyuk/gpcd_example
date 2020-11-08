@@ -63,7 +63,6 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_protofile_2eproto::offsets[] P
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::myproto::Numbers, nums_),
-  PROTOBUF_FIELD_OFFSET(::myproto::Numbers, size_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::myproto::Answer, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -73,7 +72,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_protofile_2eproto::offsets[] P
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::myproto::Numbers)},
-  { 7, -1, sizeof(::myproto::Answer)},
+  { 6, -1, sizeof(::myproto::Answer)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -82,11 +81,10 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_protofile_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\017protofile.proto\022\007myproto\"%\n\007Numbers\022\014\n"
-  "\004nums\030\001 \003(\005\022\014\n\004size\030\002 \001(\004\"\030\n\006Answer\022\016\n\006a"
-  "nswer\030\001 \001(\0042=\n\tMyService\0220\n\tGetMaxOne\022\020."
-  "myproto.Numbers\032\017.myproto.Answer\"\000b\006prot"
-  "o3"
+  "\n\017protofile.proto\022\007myproto\"\027\n\007Numbers\022\014\n"
+  "\004nums\030\001 \003(\005\"\030\n\006Answer\022\016\n\006answer\030\001 \001(\0042=\n"
+  "\tMyService\0220\n\tGetMaxOne\022\020.myproto.Number"
+  "s\032\017.myproto.Answer\"\000b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_protofile_2eproto_deps[1] = {
 };
@@ -96,7 +94,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_pro
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_protofile_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_protofile_2eproto = {
-  false, false, descriptor_table_protodef_protofile_2eproto, "protofile.proto", 162,
+  false, false, descriptor_table_protodef_protofile_2eproto, "protofile.proto", 148,
   &descriptor_table_protofile_2eproto_once, descriptor_table_protofile_2eproto_sccs, descriptor_table_protofile_2eproto_deps, 2, 0,
   schemas, file_default_instances, TableStruct_protofile_2eproto::offsets,
   file_level_metadata_protofile_2eproto, 2, file_level_enum_descriptors_protofile_2eproto, file_level_service_descriptors_protofile_2eproto,
@@ -125,12 +123,10 @@ Numbers::Numbers(const Numbers& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       nums_(from.nums_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  size_ = from.size_;
   // @@protoc_insertion_point(copy_constructor:myproto.Numbers)
 }
 
 void Numbers::SharedCtor() {
-  size_ = PROTOBUF_ULONGLONG(0);
 }
 
 Numbers::~Numbers() {
@@ -165,7 +161,6 @@ void Numbers::Clear() {
   (void) cached_has_bits;
 
   nums_.Clear();
-  size_ = PROTOBUF_ULONGLONG(0);
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -184,13 +179,6 @@ const char* Numbers::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           CHK_(ptr);
         } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
           _internal_add_nums(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // uint64 size = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          size_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -231,12 +219,6 @@ failure:
     }
   }
 
-  // uint64 size = 2;
-  if (this->size() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_size(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -266,13 +248,6 @@ size_t Numbers::ByteSizeLong() const {
     _nums_cached_byte_size_.store(cached_size,
                                     std::memory_order_relaxed);
     total_size += data_size;
-  }
-
-  // uint64 size = 2;
-  if (this->size() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
-        this->_internal_size());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -307,9 +282,6 @@ void Numbers::MergeFrom(const Numbers& from) {
   (void) cached_has_bits;
 
   nums_.MergeFrom(from.nums_);
-  if (from.size() != 0) {
-    _internal_set_size(from._internal_size());
-  }
 }
 
 void Numbers::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -334,7 +306,6 @@ void Numbers::InternalSwap(Numbers* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   nums_.InternalSwap(&other->nums_);
-  swap(size_, other->size_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Numbers::GetMetadata() const {

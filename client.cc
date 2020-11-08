@@ -24,7 +24,6 @@ class MyClient {
     for (uint64_t i = 0; i < nums.size(); ++i){
         numbers.add_nums(nums[i]);
     }
-    numbers.set_size(size);
     Answer answer;
 
     ClientContext context;

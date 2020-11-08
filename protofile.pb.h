@@ -184,7 +184,6 @@ class Numbers PROTOBUF_FINAL :
 
   enum : int {
     kNumsFieldNumber = 1,
-    kSizeFieldNumber = 2,
   };
   // repeated int32 nums = 1;
   int nums_size() const;
@@ -208,15 +207,6 @@ class Numbers PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
       mutable_nums();
 
-  // uint64 size = 2;
-  void clear_size();
-  ::PROTOBUF_NAMESPACE_ID::uint64 size() const;
-  void set_size(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_size() const;
-  void _internal_set_size(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  public:
-
   // @@protoc_insertion_point(class_scope:myproto.Numbers)
  private:
   class _Internal;
@@ -226,7 +216,6 @@ class Numbers PROTOBUF_FINAL :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > nums_;
   mutable std::atomic<int> _nums_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 size_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_protofile_2eproto;
 };
@@ -423,26 +412,6 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
 Numbers::mutable_nums() {
   // @@protoc_insertion_point(field_mutable_list:myproto.Numbers.nums)
   return _internal_mutable_nums();
-}
-
-// uint64 size = 2;
-inline void Numbers::clear_size() {
-  size_ = PROTOBUF_ULONGLONG(0);
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 Numbers::_internal_size() const {
-  return size_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 Numbers::size() const {
-  // @@protoc_insertion_point(field_get:myproto.Numbers.size)
-  return _internal_size();
-}
-inline void Numbers::_internal_set_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  
-  size_ = value;
-}
-inline void Numbers::set_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _internal_set_size(value);
-  // @@protoc_insertion_point(field_set:myproto.Numbers.size)
 }
 
 // -------------------------------------------------------------------
